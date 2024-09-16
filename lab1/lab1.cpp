@@ -1,6 +1,7 @@
 #include <cstdint>
 #include <iostream>
 
+/*
 int32_t sum_prod(const int32_t values[], uint64_t num_values, int32_t &product) { // a0, a1, a2
     uint64_t i;
     int32_t sum;
@@ -14,6 +15,8 @@ int32_t sum_prod(const int32_t values[], uint64_t num_values, int32_t &product) 
     }
     return sum;
 }
+*/
+extern "C" int32_t sum_prod(const int32_t values[], uint64_t num_values, int32_t &product);
 
 
 int main() {

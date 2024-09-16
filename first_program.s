@@ -14,8 +14,8 @@ sum_prod:
 li    t0, 0   # Use t0 for the sum
 li    t1, 1   # Use t1 for the product
 li    t2, 0   # Iterator i
-li    t3, 0   # Iterator i added to values
-li    t4, 0   # Dereferenced value of values[i]
+#li    t3, 0   # Iterator i added to values
+#li    t4, 0   # Dereferenced value of values[i]
 
 # numeric label
 1: # backwards
@@ -47,3 +47,4 @@ mv      a0, t0       # return register a0 = t0 (accumulating sum)
 sw      t1, 0(a2)    # *product = t1 (accumulating product)
 
 ret
+
