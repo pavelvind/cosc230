@@ -29,3 +29,4 @@ fsw fa1, 4(a0)        # s1 = side1
 fmul.s ft0, fa0, fa0
 fmul.s ft1, fa1, fa1
 fadd.s ft2, ft1, ft0 
+text
