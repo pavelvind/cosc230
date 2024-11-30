@@ -178,4 +178,3 @@ move_to:
 return_null:
     li      a0, 0              # a0 = nullptr
     ret                        # Return nullptr
-    

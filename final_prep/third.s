@@ -19,6 +19,8 @@
 
 .global map
 map:
+
+    addi sp, sp, -48
     # allocate stack space
     sd      ra, 40(sp)
     sd      s0, 32(sp)  # values[]
@@ -41,13 +43,13 @@ map:
     #
 
     loop_start:
-    bge i, s1, loop_end # Jump out if i >= num_values
+    bge s3, s1, loop_end # Jump out if i >= num_values
     
     # Calculate address of values[i]
     slli t0, s3, 3
-    add t1, s3, t0
+    add t1, s0, t0
      # Load values[i] into fa0
-    fld t3, fa0, 0(t1)
+    fld fa0, 0(t1)
     
     fmv.d  fa1, fs0      # Set double right = map_value
 
@@ -56,9 +58,17 @@ map:
     fsd    fa0, 0(t1)    # fa0 (the return value from mapping_func) # Stores it into memory at the address t1 + 0 
 
     
-    addi s3, s3, 0      # += i
+    addi s3, s3, 1          # Increment loop counter
     j loop_start
     loop_end:
+    ld      ra, 40(sp)         # Restore return address
+    ld      s0, 32(sp)         # Restore saved register s0
+    ld      s1, 24(sp)         # Restore saved register s1
+    ld      s2, 16(sp)         # Restore saved register s2
+    ld      s3, 8(sp)          # Restore saved register s3
+    fld     fs0, 0(sp)         # Restore saved floating-point register fs0
+    addi    sp, sp, 48         # Deallocate stack space
+    ret                        # Return to caller
 
 .global map_add
 map_add:

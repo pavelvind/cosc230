@@ -10,6 +10,7 @@
 # a1 = uint64_t num_values
 # a2 = int32_t &product
 
+sum_prod:
 # Registers
 li t0, 0 #sum
 li t1, 1 #product

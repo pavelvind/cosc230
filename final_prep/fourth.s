@@ -15,10 +15,10 @@
 
 make_triangle:
 
-addi sp, sp, -8
+addi sp, sp, -16
 
 # save return addres on the stack bc after calling math functions its back
-sw ra, 0(sp)
+sw ra, 4(sp)
 
 # When make_triangle is called, the pointer to a memory location
 # where the RightTriangle structure is to be constructed is passed 
@@ -47,20 +47,22 @@ flw ft3, 0(a0)        #s0
 flw ft4, 8(a0)        #hyp
 
 fdiv.s fa0, ft3, ft4  #prepared for function call
-call asinf fa0
+call asinf
 fsw fa0, 12(a0)       # store to the structure pointer (nos table)
 
 flw ft3, 4(a0)        #s1
 flw ft4, 8(a0)        #hyp
 
 fdiv.s fa0, ft3, ft4
-call asinf fa0
+call asinf
 fsw fa0, 16(a0)
 
 lw ra, 4(sp)          # restore return address
-addi sp, sp, 8        # deallocate stack space
-ret                   # jalr x0, ra, 0
+addi sp, sp, 16        # deallocate stack space
+
 
 # Jumps to the address stored in the ra (return address) register.
 # The x0 ensures that no value is written back to a register since x0 is always 0.
 # The 0 offset means the jump goes directly to the address in ra.
+
+ret                   # jalr x0, ra, 0
