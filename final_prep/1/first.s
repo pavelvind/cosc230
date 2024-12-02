@@ -46,6 +46,6 @@ loop_end:
 #Before return, need to put the sum in the return register, which is a0. Currently the sum is in the t0 register, but we can move it into a0 by using the mv pseudo-instruction.
 
 mv      a0, t0       # return register a0 = t0 (accumulating sum)
-sw      t1, 0(a2)    # *product = t1 (accumulating product)
+sw      t1, 0(a2)    # cannot use mv because &product is passed by reference # you must write the value of t3 to the memory location pointed to by a2.
 
 ret #  alias for jalr zero, ra
