@@ -55,6 +55,7 @@ map:
 
     # Call map funcion
     jalr   s2            # mapping_func(fa0, fa1) # Calls the function at the address stored in s2 # jalr ra, 0(s2) 
+    # Use jalr to call the function stored in the register cant call adress by 'call'
     fsd    fa0, 0(t1)    # fa0 (the return value from mapping_func) # Stores it into memory at the address t1 + 0 
 
     
