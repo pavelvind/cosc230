@@ -24,8 +24,13 @@ sw ra, 4(sp)
 # where the RightTriangle structure is to be constructed is passed 
 # via the register a0. This pointer represents the base address of the structure in memory.
 # stack pointer 
+
+# The structure is a complex data type that resides in memory.
+# You need to explicitly store values (side0 and side1) into memory using the offsets of the fields within the structure 
 fsw fa0, 0(a0) #side0
 fsw fa1, 4(a0) #side1
+
+# After this: The original value in a0 (pointer to rt) is no longer needed in a0.
 
 #Additional computations (like calculating the hypotenuse and angles) will be 
 #performed and stored in their respective offsets (8(a0), 12(a0), and 16(a0)).
