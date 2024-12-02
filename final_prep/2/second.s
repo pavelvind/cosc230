@@ -30,7 +30,7 @@ mv      s0, a0           # minimum
 mv      s1, a1           # maximum
 
 # call rand() and save its value
-call     rand            # rand() in a0
+call     rand            # rand() in a0 # overwrited ra
 
 # calculations 
 # s0 + a0 % (s1 - s0 + 1)
@@ -47,4 +47,4 @@ ld s1, 16(sp)
 
 addi      sp, sp, 32       # Move stack back (deallocate)
 
-ret
+ret # jr ra  # Return to caller
